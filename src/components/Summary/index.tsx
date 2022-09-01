@@ -4,7 +4,7 @@ export function Summary() {
     return (
         <SummaryContainer>
             <SummaryCard>
-                <header>
+                <header >
                     <span>Entradas</span>
                     <ArrowCircleUp size={32} color="#00b37e" />
                 </header>

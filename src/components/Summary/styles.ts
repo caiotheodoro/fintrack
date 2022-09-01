@@ -21,7 +21,7 @@ interface SummaryCardProps {
 
 export const SummaryCard = styled.div<SummaryCardProps>`
 
-    background-color: ${({ theme, variant }) => theme['gray-600']};
+    background-color: ${({ theme }) => theme['gray-600']};
     border-radius: 6px;
     padding: 2rem;
 

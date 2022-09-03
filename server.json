@@ -1,0 +1,44 @@
+{
+    "transactions": [
+        {
+            "id": 1,
+            "description": "Flower",
+            "price": -20,
+            "type": "outcome",
+            "category": "Venda",
+            "createdAt": "2019-06-01T12:00:00.000Z"
+        },
+        {
+            "id": 2,
+            "description": "Salary",
+            "price": 2000,
+            "type": "income",
+            "category": "Renda",
+            "createdAt": "2019-01-02T12:00:00.000Z"
+        },
+        {
+            "id": 3,
+            "description": "Book",
+            "price": 100,
+            "type": "income",
+            "category": "Lazer",
+            "createdAt": "2019-06-01T06:00:00.000Z"
+        },
+        {
+            "id": 4,
+            "description": "Book",
+            "price": -10,
+            "type": "outcome",
+            "category": "Lazer",
+            "createdAt": "2019-06-01T20:00:00.000Z"
+        },
+        {
+            "id": 5,
+            "description": "Book",
+            "price": -80,
+            "type": "outcome",
+            "category": "Lazer",
+            "createdAt": "2019-07-01T12:00:00.000Z"
+        }
+    ]
+}

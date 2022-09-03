@@ -3,7 +3,7 @@
         {
             "id": 1,
             "description": "Flower",
-            "price": -20,
+            "price": 20,
             "type": "outcome",
             "category": "Venda",
             "createdAt": "2019-06-01T12:00:00.000Z"
@@ -27,7 +27,7 @@
         {
             "id": 4,
             "description": "Book",
-            "price": -10,
+            "price": 10,
             "type": "outcome",
             "category": "Lazer",
             "createdAt": "2019-06-01T20:00:00.000Z"
@@ -35,7 +35,7 @@
         {
             "id": 5,
             "description": "Book",
-            "price": -80,
+            "price": 80,
             "type": "outcome",
             "category": "Lazer",
             "createdAt": "2019-07-01T12:00:00.000Z"

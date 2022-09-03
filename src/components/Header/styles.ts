@@ -20,7 +20,6 @@ export const HeaderContent = styled.div`
 
 `
 
-
 export const NewTransactionButton = styled.button`
 height: 50px;
 border: 0;

@@ -77,3 +77,33 @@ font-size: 1.5rem;
 cursor: pointer;
 
 `
+
+export const TransactionType = styled.div`
+display: grid;
+grid-template-columns: repeat(2,1fr);
+gap: 1rem;
+margin-top: 0.5rem;
+`
+
+interface TransactionsTypeButtonProps {
+    variant: 'income' | 'outcome';
+}
+export const TransactionsTypeButton = styled.button<TransactionsTypeButtonProps>`
+
+background: ${({ theme }) => theme['gray-700']};
+padding: 1rem;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 0.5rem;
+border-radius: 6px;
+cursor: pointer;
+border: 0;
+
+color: ${({ theme }) => theme['gray-300']};
+
+    svg {
+        color:  ${({ variant, theme }) => variant === 'income' ? theme['green-300'] : theme['red-500']};
+    }
+
+`

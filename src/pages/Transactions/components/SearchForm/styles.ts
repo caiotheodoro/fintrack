@@ -28,12 +28,18 @@ button {
     border: 0;
     padding: 1rem;
     background: transparent;
-    border: 1px solid ${({ theme }) => theme['gray-300']};
-    color: ${({ theme }) => theme['gray-300']};
+    border: 1px solid ${({ theme }) => theme['green-300']};
+    color: ${({ theme }) => theme['green-300']};
+    cursor: pointer;
     font-weight: bold;
     border-radius: 6px;
 
-    &:hover {
+    &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+
+    &:not(:disabled):hover {
         background: ${({ theme }) => theme['green-500']};
         color: ${({ theme }) => theme.white};
         border-color: ${({ theme }) => theme['green-500']};

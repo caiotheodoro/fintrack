@@ -1,10 +1,32 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { ArrowCircleDown, ArrowCircleUp, X } from "phosphor-react";
 import { CloseButton, Content, Overlay, TransactionsTypeButton, TransactionType } from "./styles";
+import * as zod from "zod";
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const newTransactionSchema = zod.object({
+    description: zod.string(),
+    price: zod.number(),
+    category: zod.string(),
+    type: zod.enum(['income', 'outcome']),
+});
+
+type NewTransactionsFormInputs = zod.infer<typeof newTransactionSchema>;
 
 export function NewTransactionModal() {
+    const { register, control, handleSubmit, formState: { isSubmitting } } = useForm<NewTransactionsFormInputs>
+        ({
+            resolver: zodResolver(newTransactionSchema),
+        });
+
+
+    async function handleCreateNewTransaction(data: NewTransactionsFormInputs) {
+        await new Promise((resolve) => setTimeout(resolve, 1000))
+        console.log(data)
+    }
     return (
-        <Dialog.Portal>
+        <Dialog.Portal >
             <Overlay />
             <Content>
                 <Dialog.Title>Nova Transação</Dialog.Title>
@@ -13,26 +35,47 @@ export function NewTransactionModal() {
                     <X />
                 </CloseButton>
 
-                <form>
-                    <input type="text" placeholder="Descrição" required />
-                    <input type="number" placeholder="Preço" required />
-                    <input type="text" placeholder="Categoria" required />
+                <form onSubmit={handleSubmit(handleCreateNewTransaction)}>
+                    <input
+                        {...register("description")}
+                        type="text"
+                        placeholder="Descrição"
+                        required />
 
-                    <TransactionType>
-                        <TransactionsTypeButton variant="income" value="income">
-                            <ArrowCircleUp size={24} />
-                            Entrada
-                        </TransactionsTypeButton>
-                        <TransactionsTypeButton variant="outcome" value="outcome">
-                            <ArrowCircleDown size={24} />
-                            Saída
-                        </TransactionsTypeButton>
-                    </TransactionType>
+                    <input
+                        {...register("price", { valueAsNumber: true })}
+                        type="number"
+                        placeholder="Preço"
+                        required />
 
-                    <button type="submit">Cadastrar</button>
+                    <input
+                        {...register("category")}
+                        type="text"
+                        placeholder="Categoria"
+                        required />
+
+
+                    <Controller
+                        control={control}
+                        name="type"
+                        render={({ field }) => (
+                            <TransactionType onValueChange={field.onChange} value={field.value} >
+                                <TransactionsTypeButton variant="income" value="income">
+                                    <ArrowCircleUp size={24} />
+                                    Entrada
+                                </TransactionsTypeButton>
+                                <TransactionsTypeButton variant="outcome" value="outcome">
+                                    <ArrowCircleDown size={24} />
+                                    Saída
+                                </TransactionsTypeButton>
+                            </TransactionType>
+                        )}
+                    />
+
+                    <button type="submit" disabled={isSubmitting}>Cadastrar</button>
                 </form>
 
             </Content>
-        </Dialog.Portal>
+        </Dialog.Portal >
     )
 }
